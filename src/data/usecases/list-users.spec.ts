@@ -23,4 +23,10 @@ describe('DbListUsers', () => {
     await sut.list(filter)
     expect(listUsersRepositorySpy.params).toEqual(filter)
   })
+
+  test('Should return same value to ListUserRepository return', async () => {
+    const { sut, listUsersRepositorySpy } = makeSut()
+    const users = await sut.list(mockUser())
+    expect(listUsersRepositorySpy.users).toEqual(users)
+  })
 })
