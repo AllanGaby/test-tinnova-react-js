@@ -19,7 +19,14 @@ const Dashboard: React.FC<Props> = ({listUsers}: Props) => {
   }, [listUsers])
 
   return (
+    <>
     <h1>Lista de usuários</h1>
+    <ul>
+      {users?.map(user => (
+        <li key={user.name}>{user.name}</li>
+      ))}
+    </ul>
+    </>
   )
 }
 
