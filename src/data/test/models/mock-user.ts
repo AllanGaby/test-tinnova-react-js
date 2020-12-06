@@ -7,3 +7,10 @@ export const mockUser = (): User => ({
   email: faker.internet.email(),
   phone: faker.phone.phoneNumberFormat()
 })
+
+export const mockEmptyUser = (): User => ({
+  name: '',
+  cpf: '',
+  email: '',
+  phone: ''
+})

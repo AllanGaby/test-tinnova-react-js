@@ -1,5 +1,5 @@
 import { LocalStorageUserRepository } from './user-repository'
-import { mockUser } from './../../../data/test/models'
+import { mockEmptyUser, mockUser } from './../../../data/test/models'
 import faker from 'faker'
 
 interface sutTypes {
@@ -33,6 +33,25 @@ describe('LocalStorageUserRepository', () => {
       await sut.create(user)
       const userInLocalStorage = localStorage.getItem(userKey)      
       expect(userInLocalStorage).toEqual(JSON.stringify([user]))
+    })
+  })
+
+  describe('ListUsers', () => {
+    test('Should return a empty list if localstorage is empty', async () => {
+      const { sut } = makeSut()
+      const list = await sut.list(mockEmptyUser())
+      expect(list).toEqual([])
+    })
+
+    test('Should return correct list is localstorage is not empty', async () => {
+      const { sut } = makeSut()      
+      const users = [
+        mockUser(),
+        mockUser()
+      ]
+      localStorage.setItem(userKey, JSON.stringify(users))
+      const list = await sut.list(mockEmptyUser())
+      expect(list).toEqual(users)      
     })
   })
 })
