@@ -1,4 +1,4 @@
-import { ListUsersRepository, CreateUserRepository } from '../../repositories/user'
+import { ListUsersRepository, CreateUserRepository, FindUserByCPFRepository } from '../../repositories/user'
 import { User } from '../../../domain/models'
 import { mockUser } from '../models'
 
@@ -22,5 +22,15 @@ export class CreateUserRepositorySpy implements CreateUserRepository {
   async create(param: User): Promise<User> {
     this.params = param
     return this.params
+  }
+}
+
+export class FindUserByCPFRepositorySPy implements FindUserByCPFRepository {
+  cpf!: string
+  user!: User
+
+  async findByCPF(cpf: string): Promise<User> {
+    this.cpf = cpf
+    return this.user
   }
 }
