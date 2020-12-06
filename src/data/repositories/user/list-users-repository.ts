@@ -1,5 +1,5 @@
 import { User } from '@/domain/models'
 
-export interface ListUsers {
+export interface ListUsersRepository {
   list(filter: User): Promise<User[]>
 }
