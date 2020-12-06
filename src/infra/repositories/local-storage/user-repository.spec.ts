@@ -53,5 +53,42 @@ describe('LocalStorageUserRepository', () => {
       const list = await sut.list(mockEmptyUser())
       expect(list).toEqual(users)      
     })
+
+    test('Should return correct user if filter is provide', async () => {
+      const { sut } = makeSut()
+      const user = mockUser()
+      const users = [
+        mockUser(),
+        mockUser(),
+        user
+      ]
+      localStorage.setItem(userKey, JSON.stringify(users))
+      const list = await sut.list({
+        ...mockEmptyUser(),
+        name: user.name
+      })      
+      expect(list).toEqual([user])
+    })
+  })
+
+  describe('FindUserByCPF', () => {
+    test('Should return undefined if user is not found', async () => {
+      const { sut } = makeSut()
+      const user = await sut.findByCPF(faker.random.uuid())
+      expect(user).toBeFalsy()
+    })
+
+    test('Should return a correct user if user is found', async () => {
+      const { sut } = makeSut()
+      const user = mockUser()
+      const users = [
+        mockUser(),
+        mockUser(),
+        user
+      ]
+      localStorage.setItem(userKey, JSON.stringify(users))      
+      const userByUser = await sut.findByCPF(user.cpf)
+      expect(userByUser).toEqual(user)
+    })
   })
 })
