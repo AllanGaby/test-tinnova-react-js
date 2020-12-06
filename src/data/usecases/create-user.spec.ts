@@ -34,4 +34,17 @@ describe('DbCreateUser', () => {
     const promise = sut.create(mockUser())
     await expect(promise).rejects.toThrow(new CPFIsInUseError())    
   })
+
+  test('Should call CreateUserRepository with correct value', async () => {
+    const { sut, createUserRepositorySpy } = makeSut()
+    const user = mockUser()
+    await sut.create(user)
+    expect(createUserRepositorySpy.params).toEqual(user)    
+  })
+
+  test('Should return a user returned by CreateUserRepository', async () => {
+    const { sut, createUserRepositorySpy } = makeSut()
+    const user = await sut.create(mockUser())
+    expect(user).toEqual(createUserRepositorySpy.params)
+  })
 })

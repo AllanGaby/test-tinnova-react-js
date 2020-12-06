@@ -14,6 +14,6 @@ export class DbCreateUser implements CreateUser {
     if (userByCPF){
       throw new CPFIsInUseError()
     }
-    return user
+    return this.createUserRepository.create(user)
   }
 }
