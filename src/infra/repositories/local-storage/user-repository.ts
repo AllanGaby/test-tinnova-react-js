@@ -20,11 +20,16 @@ export class LocalStorageUserRepository implements ListUsersRepository, CreateUs
 
   async list(filter: User): Promise<User[]> {
     const usersInLocalStorage = this.getUsersInLocalStorage()
-    return usersInLocalStorage.filter((user: User) => 
-      (((!filter.name) || (filter.name === user.name)) &&
-       ((!filter.cpf) || (filter.name === user.cpf)) &&
-       ((!filter.email) || (filter.name === user.email)) &&
-       ((!filter.phone) || (filter.name === user.phone))))    
+    if(filter){
+      return usersInLocalStorage.filter((user: User) => 
+        (((!filter.name) || (filter.name === user.name)) &&
+         ((!filter.cpf) || (filter.name === user.cpf)) &&
+         ((!filter.email) || (filter.name === user.email)) &&
+         ((!filter.phone) || (filter.name === user.phone))))    
+    }
+    else{
+      return usersInLocalStorage
+    }
   }
   
   async create(user: User): Promise<User> {
