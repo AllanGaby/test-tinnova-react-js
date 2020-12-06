@@ -4,6 +4,6 @@ import React from 'react'
 
 export const makeRegister: React.FC = () => {
   return (
-    <Register/>
+    <Register createUser={makeDbCreateUser()}/>
   )
 }
