@@ -1,6 +1,6 @@
-import { ListUsers } from '@/domain/usecases'
-import { ListUsersRepository } from '@/data/repositories/user'
-import { User } from '@/domain/models'
+import { ListUsers } from './../../domain/usecases'
+import { ListUsersRepository } from './../repositories/user'
+import { User } from './../../domain/models'
 
 export class DbListUsers implements ListUsers {
   constructor(private readonly listUsersRepository: ListUsersRepository) {}

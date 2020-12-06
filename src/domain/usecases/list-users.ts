@@ -1,4 +1,4 @@
-import { User } from '@/domain/models'
+import { User } from './../models'
 
 export interface ListUsers {
   list(filter: User): Promise<User[]>

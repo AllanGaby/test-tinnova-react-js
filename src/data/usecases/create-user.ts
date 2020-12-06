@@ -1,6 +1,6 @@
-import { CreateUser } from '@/domain/usecases'
-import { FindUserByCPFRepository, CreateUserRepository } from '@/data/repositories/user'
-import { User } from '@/domain/models'
+import { CreateUser } from './../../domain/usecases'
+import { FindUserByCPFRepository, CreateUserRepository } from './../repositories/user'
+import { User } from './../../domain/models'
 import { CPFIsInUseError } from '../errors'
 
 export class DbCreateUser implements CreateUser {

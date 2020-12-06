@@ -1,5 +1,5 @@
-import { ListUsersRepository, CreateUserRepository, FindUserByCPFRepository } from '@/data/repositories/user'
-import { User } from '@/domain/models';
+import { ListUsersRepository, CreateUserRepository, FindUserByCPFRepository } from './../../../data/repositories/user'
+import { User } from './../../../domain/models';
 
 export class LocalStorageUserRepository implements ListUsersRepository, CreateUserRepository, FindUserByCPFRepository {
   constructor(

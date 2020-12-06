@@ -1,5 +1,5 @@
 import { ListUsersRepository, CreateUserRepository, FindUserByCPFRepository } from '../../repositories/user'
-import { User } from '../../../domain/models'
+import { User } from './../../../domain/models'
 import { mockUser } from '../models'
 
 export class ListUsersRepositorySpy implements ListUsersRepository {
