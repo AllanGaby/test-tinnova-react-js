@@ -2,7 +2,9 @@ import { ListUsersRepository, CreateUserRepository, FindUserByCPFRepository } fr
 import { User } from '@/domain/models';
 
 export class LocalStorageUserRepository implements ListUsersRepository, CreateUserRepository, FindUserByCPFRepository {
-  private userKey: string = '@AllanGaby:Users'
+  constructor(
+    private readonly userKey: string
+  ) {}
 
   private getUsersInLocalStorage(): User[] {
     const usersInLocalStorage = localStorage.getItem(this.userKey)
