@@ -1,5 +1,5 @@
 import { User } from './../models'
 
 export interface ListUsers {
-  list(filter: User): Promise<User[]>
+  list(filter: User | undefined): Promise<User[]>
 }

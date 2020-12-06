@@ -1,11 +1,11 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Dashboard from '../pages/Dashboard'
-import Register from '../pages/Register';
+import { makeDashBoard } from './../factories/pages'
+import Register from '../../presentation/pages/Register';
 
 const Routes: React.FC = () => (
   <Switch>
-    <Route path="/" exact component={Dashboard} />
+    <Route path="/" exact component={makeDashBoard} />
     <Route path="/register" component={Register} />
   </Switch>
 );
